@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Engagement Sania & Bayu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:#faf8f4;
+color:#333;
+overflow-x:hidden;
+}
+
+/* OPENING */
+
+#opening{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:#f7f3ed;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+flex-direction:column;
+}
+
+.envelope{
+width:250px;
+height:160px;
+background:#c8a96a;
+position:relative;
+border-radius:5px;
+cursor:pointer;
+}
+
+.envelope:before{
+content:'';
+position:absolute;
+top:-80px;
+left:0;
+border-left:125px solid transparent;
+border-right:125px solid transparent;
+border-bottom:80px solid #d7b87a;
+}
+
+.open-btn{
+margin-top:30px;
+padding:12px 25px;
+border:none;
+background:#b89454;
+color:white;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url('img/cover.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero-content{
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,.1);
+padding:35px;
+border-radius:25px;
+max-width:500px;
+}
+
+.hero h1{
+font-size:60px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.hero h2{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.hero p{
+margin-top:10px;
+}
+
+section{
+padding:80px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+.title{
+text-align:center;
+font-family:'Cormorant Garamond',serif;
+font-size:45px;
+color:#b89454;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.box{
+background:#b89454;
+color:white;
+padding:15px;
+border-radius:20px;
+min-width:90px;
+text-align:center;
+}
+
+.box span{
+display:block;
+font-size:30px;
+font-weight:bold;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+height:350px;
+object-fit:cover;
+border-radius:20px;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:14px 25px;
+background:#b89454;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+/* MUSIC */
+
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:999;
+}
+
+.music button{
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#b89454;
+color:white;
+font-size:22px;
+cursor:pointer;
+}
+
+footer{
+padding:50px;
+text-align:center;
+color:#777;
+}
+
+iframe{
+width:100%;
+height:350px;
+border:none;
+border-radius:20px;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<div id="opening">
+
+<div class="envelope"></div>
+
+<p style="margin-top:20px;">
+Kepada Yth.
+</p>
+
+<h3 id="guestName">Tamu Undangan</h3>
+
+<button class="open-btn" onclick="openInvitation()">
+Buka Undangan
+</button>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
+<source src="audio/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music">
+<button onclick="toggleMusic()">♫</button>
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<p>THE ENGAGEMENT OF</p>
+
+<h1>Sania</h1>
+<h2>&</h2>
+<h1>Bayu</h1>
+
+<p>31 Mei 2026</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">Save The Date</h2>
+
+<div class="card" style="text-align:center;">
+
+<p>Minggu, 31 Mei 2026</p>
+<p>15.00 WIB s/d Selesai</p>
+
+<div class="countdown">
+
+<div class="box">
+<span id="days">0</span>
+Hari
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+Jam
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+Menit
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+Detik
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">Galeri</h2>
+
+<div class="gallery">
+
+<img src="img/gallery1.jpg">
+<img src="img/gallery2.jpg">
+<img src="img/cover.jpg">
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">Lokasi Acara</h2>
+
+<div class="card">
+
+<p style="text-align:center;">
+Koordinat:
+-7.5642453, 112.4916298
+</p>
+
+<div style="text-align:center">
+
+<a class="btn"
+href="https://www.google.com/maps?q=-7.5642453,112.4916298"
+target="_blank">
+Lihat Google Maps
+</a>
+
+</div>
+
+<iframe
+src="https://maps.google.com/maps?q=-7.5642453,112.4916298&z=17&output=embed">
+</iframe>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">Konfirmasi Kehadiran</h2>
+
+<div class="card" style="text-align:center;">
+
+<p>
+Mohon konfirmasi kehadiran Anda melalui WhatsApp.
+</p>
+
+<a class="btn"
+href="https://wa.me/6285806269814?text=Halo%20Sania%20dan%20Bayu,%20saya%20akan%20hadir%20di%20acara%20engagement."
+target="_blank">
+RSVP WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+Sania & Bayu<br>
+31 Mei 2026
+
+</footer>
+
+<script>
+
+/* NAMA TAMU */
+
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("to");
+
+if(guest){
+document.getElementById("guestName").innerHTML = guest;
+}
+
+/* OPEN INVITATION */
+
+function openInvitation(){
+
+document.getElementById("opening").style.display="none";
+
+document.getElementById("music").play();
+
+}
+
+/* MUSIC */
+
+function toggleMusic(){
+
+let music=document.getElementById("music");
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+/* COUNTDOWN */
+
+let target =
+new Date("May 31, 2026 15:00:00").getTime();
+
+setInterval(()=>{
+
+let now=new Date().getTime();
+
+let distance=target-now;
+
+let days=Math.floor(distance/(1000*60*60*24));
+let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=days;
+document.getElementById("hours").innerHTML=hours;
+document.getElementById("minutes").innerHTML=minutes;
+document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
